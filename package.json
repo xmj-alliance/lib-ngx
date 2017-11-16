@@ -1,0 +1,22 @@
+{
+  "name": "@xmj-alliance/lib-ngx",
+  "version": "0.1.0",
+  "description": "Common lib modules for Angular 2+",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xmj-alliance/lib-ngx.git"
+  },
+  "keywords": [
+    "angular"
+  ],
+  "author": "xmj-alliance",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/xmj-alliance/lib-ngx/issues"
+  },
+  "homepage": "https://github.com/xmj-alliance/lib-ngx#readme"
+}
