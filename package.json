@@ -18,5 +18,10 @@
   "bugs": {
     "url": "https://github.com/xmj-alliance/lib-ngx/issues"
   },
+  "dependencies": {
+    "@angular/core": ">=2",
+    "@angular/common": ">=2",
+    "rxjs": "^5.0.0"
+  },
   "homepage": "https://github.com/xmj-alliance/lib-ngx#readme"
 }

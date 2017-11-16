@@ -1,0 +1,10 @@
+{
+  "name": "@xmj-alliance/lib-ngx/inkbar",
+  "version": "",
+  "description": "山寨 inkbar of material design",
+  "author": "xmj-alliance",
+  "bugs": {
+    "url": "https://github.com/xmj-alliance/lib-ngx/issues"
+  },
+  "homepage": "https://github.com/xmj-alliance/lib-ngx#readme"
+}
