@@ -5,17 +5,28 @@ const rollup = require('gulp-better-rollup');
 const sourcemaps = require('gulp-sourcemaps');
 const runSequence = require('run-sequence');
 const rename = require('gulp-rename');
+const sass = require('gulp-sass');
+const cleanCSS = require('gulp-clean-css');
 
 gulp.task('default', (cb) => {
   // gulp entry
-  runSequence('clean', 'ngc', 'pack');
+  runSequence('clean', 'compile:css', 'compile:ts', 'pack');
 });
 
 gulp.task('clean', (cb) => {
   return del(["dist"], cb);
 });
 
-gulp.task('ngc', (cb) => {
+gulp.task('compile:css', () => {
+  gulp.src('src/**/*.scss')
+  .pipe(sass().on('error', sass.logError))
+  .pipe(cleanCSS())
+  .pipe(gulp.dest((file) => {
+    return file.base; // because of Angular 2's encapsulation, it's natural to save the css where the scss-file was
+  }));
+});
+
+gulp.task('compile:ts', (cb) => {
   exec("npm run transpile", (err, stdout, stderr)=>{
     console.log(stdout);
     console.error(stderr);
@@ -23,7 +34,7 @@ gulp.task('ngc', (cb) => {
   });
 })
 
-gulp.task('pack', (cb) => {
+gulp.task('pack', () => {
   gulp.src('dist/index.js')
   .pipe(sourcemaps.init())
   .pipe(rollup({
@@ -41,11 +52,10 @@ gulp.task('pack', (cb) => {
   // inlining the sourcemap into the exported .js file
   .pipe(sourcemaps.write())
   .pipe(rename('lib-ngx.umd.js'))
-  .pipe(gulp.dest('dist/bundles'))
+  .pipe(gulp.dest('dist/bundles/'))
 })
 
 gulp.task('log', (cb) => {
-  // place code for your default task here
   exec("echo 'Gulp works!'", (err, stdout, stderr)=>{
     console.log(stdout);
     console.error(stderr);
