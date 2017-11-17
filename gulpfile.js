@@ -54,6 +54,7 @@ gulp.task('pack', (cb) => {
         // also rollups `sourcemap` option is replaced by gulp-sourcemaps plugin
         format: 'umd',
         moduleName: 'lib.ngx',
+        treeshake: true,
         globals: {
           '@angular/core': 'ng.core',
           '@angular/common': 'ng.common',
@@ -64,6 +65,8 @@ gulp.task('pack', (cb) => {
       }),
       // inlining the sourcemap into the exported .js file
       sourcemaps.write(),
+      rename('lib-ngx.umd.js'),
+      gulp.dest('dist/bundles/'),
       uglify({
         "compress": true,
         "mangle": true
@@ -79,8 +82,11 @@ gulp.task('pack', (cb) => {
 gulp.task('finalize', (cb) => {
   // read package.json
   let package = require('./package.json');
-  // delete dev dependency
+  // edit package.json
   delete package.devDependencies;
+  package.main = "bundles/lib-ngx.umd.js";
+  package.module = "index.js";
+  package.typings = "index.d.ts";
   // write to dist
   fs.writeFileSync('./dist/package.json', JSON.stringify(package), {encoding: 'UTF-8'});
   // copy readme to dist

@@ -21,9 +21,9 @@
     "url": "https://github.com/xmj-alliance/lib-ngx/issues"
   },
   "peerDependencies": {
-    "@angular/common": "^5.0.2",
-    "@angular/core": "^5.0.2",
-    "rxjs": "^5.5.2"
+    "@angular/common": ">2.4",
+    "@angular/core": ">2.4",
+    "rxjs": "^5.0.0"
   },
   "homepage": "https://github.com/xmj-alliance/lib-ngx#readme",
   "devDependencies": {
@@ -37,7 +37,6 @@
     "gulp-sass": "^3.1.0",
     "gulp-sourcemaps": "^2.6.1",
     "gulp-uglify": "^3.0.0",
-    "node-sass": "^4.6.1",
     "pump": "^1.0.3",
     "rollup": "^0.51.6",
     "run-sequence": "^2.2.0",
