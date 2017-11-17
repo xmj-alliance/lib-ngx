@@ -1,7 +1,0 @@
-div.inkbar {
-  position: absolute;
-  bottom: 0;
-  height: 2px;
-  transition: .5s cubic-bezier(.35,0,.25,1);
-  z-index: 10;
-}
