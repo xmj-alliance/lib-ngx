@@ -2,12 +2,11 @@ import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/distinctUntilChanged';
-//import 'rxjs/add/operator/debounceTime';
 
 @Component({
 	selector: 'lib-inkbar',
 	templateUrl: './inkbar.component.html',
-	styleUrls: ['./inkbar.component.scss']
+	styleUrls: ['./inkbar.component.css']
 })
 export class InkbarComponent implements OnInit, OnDestroy {
 

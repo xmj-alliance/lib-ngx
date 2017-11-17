@@ -4,6 +4,10 @@
   "description": "Common lib modules for Angular 2+",
   "main": "index.js",
   "scripts": {
+    "build": "npm run transpile && npm run pack && npm run minify",
+    "transpile": "ngc",
+    "pack": "rollup -c",
+    "minify": "uglifyjs dist/bundles/lib-ngx.umd.js -o minconfig.json --output dist/bundles/lib-ngx.umd.min.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,9 +23,16 @@
     "url": "https://github.com/xmj-alliance/lib-ngx/issues"
   },
   "dependencies": {
-    "@angular/core": ">=2",
-    "@angular/common": ">=2",
-    "rxjs": "^5.0.0"
+    "@angular/common": "^5.0.2",
+    "@angular/core": "^5.0.2",
+    "rxjs": "^5.5.2"
   },
-  "homepage": "https://github.com/xmj-alliance/lib-ngx#readme"
+  "homepage": "https://github.com/xmj-alliance/lib-ngx#readme",
+  "devDependencies": {
+    "@angular/compiler": "^5.0.2",
+    "@angular/compiler-cli": "^5.0.2",
+    "rollup": "^0.51.6",
+    "typescript": "^2.6.1",
+    "uglify-js": "^3.1.9"
+  }
 }
