@@ -1,6 +1,6 @@
 {
   "name": "@xmj-alliance/lib-ngx",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Common lib modules for Angular 2+",
   "main": "index.ts",
   "scripts": {
