@@ -4,7 +4,7 @@
   "description": "Common lib modules for Angular 2+",
   "main": "index.js",
   "scripts": {
-    "build": "npm run transpile && npm run pack && npm run minify",
+    "build": "gulp",
     "transpile": "ngc",
     "pack": "rollup -c",
     "minify": "uglifyjs dist/bundles/lib-ngx.umd.js -o minconfig.json --output dist/bundles/lib-ngx.umd.min.js",
@@ -31,7 +31,13 @@
   "devDependencies": {
     "@angular/compiler": "^5.0.2",
     "@angular/compiler-cli": "^5.0.2",
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-better-rollup": "^2.0.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sourcemaps": "^2.6.1",
     "rollup": "^0.51.6",
+    "run-sequence": "^2.2.0",
     "typescript": "^2.6.1",
     "uglify-js": "^3.1.9"
   }
