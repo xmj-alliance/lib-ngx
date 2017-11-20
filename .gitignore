@@ -61,4 +61,4 @@ typings/
 /.vscode/*
 *.lock
 /dist/*
-/src/**/*.css
+!*.gitkeep

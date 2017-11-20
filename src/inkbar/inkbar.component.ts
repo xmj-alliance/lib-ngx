@@ -6,7 +6,7 @@ import 'rxjs/add/operator/distinctUntilChanged';
 @Component({
 	selector: 'lib-inkbar',
 	templateUrl: './inkbar.component.html',
-	styleUrls: ['./inkbar.component.css']
+	styleUrls: ['./inkbar.component.scss']
 })
 export class InkbarComponent implements OnInit, OnDestroy {
 

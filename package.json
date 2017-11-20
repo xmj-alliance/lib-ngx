@@ -1,46 +1,42 @@
 {
-  "name": "@xmj-alliance/lib-ngx",
-  "version": "0.1.1",
-  "description": "Common lib modules for Angular 2+",
-  "main": "index.ts",
+  "name": "lib-ngx",
+  "version": "2.0.0-alpha.0",
+  "description": "Common lib for ng2+",
   "scripts": {
-    "build": "gulp",
-    "transpile": "ngc",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "serve": "webpack-dev-server --hot --inline --progress",
+    "test": "karma start",
+    "build": "webpack --config config/webpack.prod.js --progress --profile --bail"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/xmj-alliance/lib-ngx.git"
-  },
-  "keywords": [
-    "angular"
-  ],
-  "author": "xmj-alliance",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/xmj-alliance/lib-ngx/issues"
+  "dependencies": {
+    "@angular/common": "^5.0.0",
+    "@angular/core": "^5.0.0",
+    "rxjs": "^5.4.3"
   },
-  "peerDependencies": {
-    "@angular/common": ">2.4",
-    "@angular/core": ">2.4",
-    "rxjs": "^5.0.0"
-  },
-  "homepage": "https://github.com/xmj-alliance/lib-ngx#readme",
   "devDependencies": {
     "@angular/compiler": "^5.0.2",
     "@angular/compiler-cli": "^5.0.2",
-    "del": "^3.0.0",
-    "gulp": "^3.9.1",
-    "gulp-better-rollup": "^2.0.0",
-    "gulp-clean-css": "^3.9.0",
-    "gulp-rename": "^1.2.2",
-    "gulp-sass": "^3.1.0",
-    "gulp-sourcemaps": "^2.6.1",
-    "gulp-uglify": "^3.0.0",
-    "pump": "^1.0.3",
-    "rollup": "^0.51.6",
-    "run-sequence": "^2.2.0",
-    "typescript": "^2.6.1",
-    "uglify-js": "^3.1.9"
+    "@ngtools/webpack": "^1.8.2",
+    "@types/node": "^8.0.28",
+    "clean-webpack-plugin": "^0.1.16",
+    "css-loader": "^0.28.7",
+    "extract-text-webpack-plugin": "^3.0.0",
+    "file-loader": "^1.1.0",
+    "html-loader": "^0.5.1",
+    "jasmine-core": "^2.8.0",
+    "karma": "^1.7.1",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-jasmine": "^1.1.0",
+    "karma-jasmine-html-reporter": "^0.2.2",
+    "karma-sourcemap-loader": "^0.3.7",
+    "karma-webpack": "^2.0.4",
+    "node-sass": "^4.7.1",
+    "raw-loader": "^0.5.1",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.18.2",
+    "typescript": "^2.5.2",
+    "webpack": "^3.6.0",
+    "webpack-dev-server": "^2.8.2",
+    "webpack-merge": "^4.1.0"
   }
 }
