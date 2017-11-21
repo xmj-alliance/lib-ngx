@@ -3,27 +3,17 @@ import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/distinctUntilChanged';
 
-import * as config from './inkbar.component.config';
-
 @Component({
 	selector: 'lib-inkbar',
-	// templateUrl: './inkbar.component.html',
 	template: `
 	
-		<main>
-			<div class="inkbar" [ngStyle]="inkbarStyle"></div>
-		</main>	
+		[THIS_IS_MY_HTML!]
 	
 	`,
-	// styleUrls: ['./inkbar.component.scss']
-  styles: [`
-		div.inkbar {
-			position: absolute;
-			bottom: 0;
-			height: 2px;
-			transition: .5s cubic-bezier(.35,0,.25,1);
-			z-index: 10;
-		}
+	styles: [`
+	
+		[THIS_IS_MY_STYLE!]
+		
 `]
 })
 export class InkbarComponent implements OnInit, OnDestroy {

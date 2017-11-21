@@ -7,16 +7,22 @@ const rollup = require('gulp-better-rollup');
 const sourcemaps = require('gulp-sourcemaps');
 const runSequence = require('run-sequence');
 const rename = require('gulp-rename');
-// const sass = require('gulp-sass');
+const sass = require('gulp-sass');
 const cleanCSS = require('gulp-clean-css');
 const uglify = require('gulp-uglify');
 const pump = require('pump');
+
+const { readfileAsync, getDirectories, compHack } = require('./lib/helpers')
+
+const regComponents = getDirectories('./src');
 
 gulp.task('default', (cb) => {
   // gulp entry
   runSequence(
     'clean',
-    // 'compile:css',
+    'stage',
+    'hack:css',
+    'hack:html',
     'compile:ts',
     'pack',
     'finalize'
@@ -24,23 +30,61 @@ gulp.task('default', (cb) => {
 });
 
 gulp.task('clean', (cb) => {
-  return del(["dist"], cb);
+  return del(["dist", "staging"], cb);
 });
 
-gulp.task('compile:css', (cb) => {
+gulp.task('stage', (cb) => {
+  pump(
+    [
+      gulp.src('src/**/*.ts'),
+      gulp.dest('staging/')
+    ],
+    cb
+  )
+});
+
+gulp.task('hack:css', async () => {
+  // let transpileScss = () => {
+  //   return new Promise((resolve, reject) => {
+  //     pump(
+  //       [
+  //         gulp.src('src/**/*.scss'),
+  //         sass().on('error', sass.logError),
+  //         cleanCSS(),
+  //         gulp.dest('./staging/'),
+  //         resolve("done")
+  //       ]
+  //     );
+  //   });
+  // };
+  
+  // let d = await transpileScss();
+  // console.log(d);
+
   pump(
     [
       gulp.src('src/**/*.scss'),
       sass().on('error', sass.logError),
       cleanCSS(),
-      gulp.dest((file) => {
-        return file.base; // because of Angular 2's encapsulation, it's natural to save the css where the scss-file was
-      })
+      gulp.dest('./staging/')
     ],
-
-    cb
+    async () => {
+      // hack loop...
+      let inkbarC = regComponents[0];
+      let css = await readfileAsync(`./staging/${inkbarC}/${inkbarC}.component.css`);
+      let comToHack = `./staging/${inkbarC}/${inkbarC}.component.ts`
+      await compHack(comToHack, '\\[THIS_IS_MY_STYLE!\\]', css);
+    }
   );
 
+});
+
+gulp.task('hack:html', async (cb) => {
+  // loop...
+  let inkbarC = regComponents[0];
+  let html = await readfileAsync(`./src/${inkbarC}/${inkbarC}.component.html`);
+  let comToHack = `./staging/${inkbarC}/${inkbarC}.component.ts`
+  await compHack(comToHack, '\\[THIS_IS_MY_HTML!\\]', html);
 });
 
 gulp.task('compile:ts', (cb) => {
