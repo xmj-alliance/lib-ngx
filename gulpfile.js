@@ -44,22 +44,6 @@ gulp.task('stage', (cb) => {
 });
 
 gulp.task('hack:css', async () => {
-  // let transpileScss = () => {
-  //   return new Promise((resolve, reject) => {
-  //     pump(
-  //       [
-  //         gulp.src('src/**/*.scss'),
-  //         sass().on('error', sass.logError),
-  //         cleanCSS(),
-  //         gulp.dest('./staging/'),
-  //         resolve("done")
-  //       ]
-  //     );
-  //   });
-  // };
-  
-  // let d = await transpileScss();
-  // console.log(d);
 
   pump(
     [
@@ -70,21 +54,35 @@ gulp.task('hack:css', async () => {
     ],
     async () => {
       // hack loop...
-      let inkbarC = regComponents[0];
-      let css = await readfileAsync(`./staging/${inkbarC}/${inkbarC}.component.css`);
-      let comToHack = `./staging/${inkbarC}/${inkbarC}.component.ts`
-      await compHack(comToHack, '\\[THIS_IS_MY_STYLE!\\]', css);
+      for (let comp of regComponents) {
+        try {
+          let css = await readfileAsync(`./staging/${comp}/${comp}.component.css`);
+          let comToHack = `./staging/${comp}/${comp}.component.ts`
+          await compHack(comToHack, '\\[THIS_IS_MY_STYLE!\\]', css);
+        } catch(e) {
+          // comp may have no scss, in this case, it will get skipped
+          console.log(`${comp} has been skipeed since it has no scss or scss file cannot read`);
+        }
+
+      }
     }
   );
 
 });
 
 gulp.task('hack:html', async (cb) => {
-  // loop...
-  let inkbarC = regComponents[0];
-  let html = await readfileAsync(`./src/${inkbarC}/${inkbarC}.component.html`);
-  let comToHack = `./staging/${inkbarC}/${inkbarC}.component.ts`
-  await compHack(comToHack, '\\[THIS_IS_MY_HTML!\\]', html);
+  // hack loop...
+  for (let comp of regComponents) {
+    try {
+      let html = await readfileAsync(`./src/${comp}/${comp}.component.html`);
+      let comToHack = `./staging/${comp}/${comp}.component.ts`
+      await compHack(comToHack, '\\[THIS_IS_MY_HTML!\\]', html);
+    } catch (error) {
+      // comp ts missing or failed to read
+      console.log(`${comp} has been skipeed since it has no component or its file cannot read`);
+    }
+  }
+
 });
 
 gulp.task('compile:ts', (cb) => {
@@ -156,8 +154,7 @@ gulp.task('finalize', (cb) => {
       gulp.dest('./dist/')
     ]
   );
-  // remove that node_modules folder in dist folder
-  // return del(["dist/node_modules"], cb);
+
 });
 
 gulp.task('log', (cb) => {
