@@ -5,13 +5,17 @@
   "scripts": {
     "serve": "webpack-dev-server --hot --inline --progress",
     "test": "karma start",
-    "build": "webpack --config config/webpack.prod.js --progress --profile --bail"
+    "build:ngc": "ngc -p tsconfig.json",
+    "build:umd": "webpack --config config/webpack.prod.umd.js --progress --profile --bail",
+    "build:app": "webpack --config config/webpack.prod.app.js --progress --profile --bail"
   },
   "license": "MIT",
   "dependencies": {
     "@angular/common": "^5.0.0",
     "@angular/core": "^5.0.0",
-    "rxjs": "^5.4.3"
+    "core-js": "^2.5.1",
+    "rxjs": "^5.4.3",
+    "zone.js": "^0.8.18"
   },
   "devDependencies": {
     "@angular/compiler": "^5.0.2",
@@ -30,7 +34,7 @@
     "karma-jasmine-html-reporter": "^0.2.2",
     "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "^2.0.4",
-    "node-sass": "^4.7.1",
+    "node-sass": "^4.7.2",
     "raw-loader": "^0.5.1",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",
