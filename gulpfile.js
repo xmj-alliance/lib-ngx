@@ -14,7 +14,7 @@ const pump = require('pump');
 
 const { readfileAsync, getDirectories, compHack } = require('./lib/helpers')
 
-const regComponents = getDirectories('./src');
+const regComponents = getDirectories('./src/components');
 
 gulp.task('default', (cb) => {
   // gulp entry
@@ -56,12 +56,12 @@ gulp.task('hack:css', async () => {
       // hack loop...
       for (let comp of regComponents) {
         try {
-          let css = await readfileAsync(`./staging/${comp}/${comp}.component.css`);
-          let comToHack = `./staging/${comp}/${comp}.component.ts`
+          let css = await readfileAsync(`./staging/components/${comp}/${comp}.component.css`);
+          let comToHack = `./staging/components/${comp}/${comp}.component.ts`
           await compHack(comToHack, '\\[THIS_IS_MY_STYLE!\\]', css);
         } catch(e) {
           // comp may have no scss, in this case, it will get skipped
-          console.log(`${comp} has been skipeed since it has no scss or scss file cannot read`);
+          console.log(`${comp} has been skipped since it has no scss or scss file cannot read`);
         }
 
       }
@@ -74,12 +74,12 @@ gulp.task('hack:html', async (cb) => {
   // hack loop...
   for (let comp of regComponents) {
     try {
-      let html = await readfileAsync(`./src/${comp}/${comp}.component.html`);
-      let comToHack = `./staging/${comp}/${comp}.component.ts`
+      let html = await readfileAsync(`./src/components/${comp}/${comp}.component.html`);
+      let comToHack = `./staging/components/${comp}/${comp}.component.ts`
       await compHack(comToHack, '\\[THIS_IS_MY_HTML!\\]', html);
     } catch (error) {
       // comp ts missing or failed to read
-      console.log(`${comp} has been skipeed since it has no component or its file cannot read`);
+      console.log(`${comp} has been skipped since it has no component or its file cannot read`);
     }
   }
 
