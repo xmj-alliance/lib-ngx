@@ -7,14 +7,20 @@ const rollup = require('gulp-better-rollup');
 const sourcemaps = require('gulp-sourcemaps');
 const runSequence = require('run-sequence');
 const rename = require('gulp-rename');
-const sass = require('gulp-sass');
+// const sass = require('gulp-sass');
 const cleanCSS = require('gulp-clean-css');
 const uglify = require('gulp-uglify');
 const pump = require('pump');
 
 gulp.task('default', (cb) => {
   // gulp entry
-  runSequence('clean', 'compile:css', 'compile:ts', 'pack', 'finalize');
+  runSequence(
+    'clean',
+    // 'compile:css',
+    'compile:ts',
+    'pack',
+    'finalize'
+  );
 });
 
 gulp.task('clean', (cb) => {
@@ -83,21 +89,31 @@ gulp.task('finalize', (cb) => {
   // read package.json
   let package = require('./package.json');
   // edit package.json
+  package.peerDependencies = package.dependencies;
+  delete package.dependencies;
   delete package.devDependencies;
+  delete package.scripts;
+
   package.main = "bundles/lib-ngx.umd.js";
   package.module = "index.js";
   package.typings = "index.d.ts";
   // write to dist
-  fs.writeFileSync('./dist/package.json', JSON.stringify(package), {encoding: 'UTF-8'});
-  // copy readme to dist
+  fs.writeFileSync('./dist/package.json', JSON.stringify(package, null, 2), {encoding: 'UTF-8'});
+  // copy readme and license to dist
   pump(
     [
       gulp.src('./readme.md'),
       gulp.dest('./dist/')
-    ],
+    ]
+  );
+  pump(
+    [
+      gulp.src('./LICENSE'),
+      gulp.dest('./dist/')
+    ]
   );
   // remove that node_modules folder in dist folder
-  return del(["dist/node_modules"], cb);
+  // return del(["dist/node_modules"], cb);
 });
 
 gulp.task('log', (cb) => {

@@ -16,12 +16,17 @@
 
 ```
 
+``` css
+  .menuItem {
+    position: relative;
+  }
+```
 
 ``` typescript javascript
 // app.component.ts
 inkbarSubject: Subject<HTMLBaseElement> = new Subject();
 
-inkbarColor = "white";
+inkbarColor = "purple";
 
 inkbarMove = (ele: HTMLBaseElement | MouseEvent) => {
   if (ele instanceof MouseEvent) {
