@@ -8,10 +8,10 @@ Created by @xmj-alliance and its members during other Angular 2+ project develop
 ## including:
 
 - Components:
-  - Inkbar
+  - [Inkbar](https://github.com/xmj-alliance/lib-ngx/blob/master/src/components/inkbar/readme.md)
 
 - Services:
-  - DataService
+  - [DataService](https://github.com/xmj-alliance/lib-ngx/blob/master/src/services/data/readme.md)
 
 [npm]: https://img.shields.io/npm/v/@xmj-alliance/lib-ngx.svg
 [npm-url]: https://npmjs.com/package/@xmj-alliance/lib-ngx
