@@ -1,6 +1,6 @@
 {
   "name": "@xmj-alliance/lib-ngx",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Common lib modules for Angular 2+",
   "main": "index.ts",
   "scripts": {
@@ -20,9 +20,10 @@
   "bugs": {
     "url": "https://github.com/xmj-alliance/lib-ngx/issues"
   },
-  "peerDependencies": {
+  "dependencies": {
     "@angular/common": ">2.4",
     "@angular/core": ">2.4",
+    "@angular/http": "^5.0.2",
     "rxjs": "^5.0.0"
   },
   "homepage": "https://github.com/xmj-alliance/lib-ngx#readme",
