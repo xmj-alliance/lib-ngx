@@ -1,5 +1,12 @@
 # lib-ngx
-Common lib modules for Angular 2+
+Common lib for Angular 2+.
+
+Created by @xmj-alliance and its members during other Angular 2+ project development.
 
 ## including:
-- inkbar
+
+- Components:
+  - Inkbar
+
+- Services:
+  - DataService
