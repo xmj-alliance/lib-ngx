@@ -1,25 +1,28 @@
-# inkbar
-山寨 inkbar of material design
+# Inkbar
+A 山寨 inkbar inspired by G⭕⛔g❗e material design.
 
-## usage example
+## Features
+- Automatically adjust itself based on element position width.
+
+## Usage example
 
 ``` html
 <!-- app.component.html -->
-  <div class="menuItem">
-    <ul #navMenu>
-      <li routerLink="/p1" (click)="inkbarMove($event)">p1</li>
-      <li routerLink="/p2" (click)="inkbarMove($event)">p2</li>
-      <li routerLink="/p3" (click)="inkbarMove($event)">p3</li>
-    </ul>
-    <lib-inkbar [nextEle]="inkbarSubject" [color]="inkbarColor"></lib-inkbar>
-  </div>
+<div class="menuItem">
+  <ul #navMenu>
+    <li (click)="inkbarMove($event)">p1</li>
+    <li (click)="inkbarMove($event)">p2</li>
+    <li (click)="inkbarMove($event)">p3</li>
+  </ul>
+  <lib-inkbar [nextEle]="inkbarSubject" [color]="inkbarColor"></lib-inkbar>
+</div>
 
 ```
 
 ``` css
-  .menuItem {
-    position: relative;
-  }
+.menuItem {
+  position: relative;
+}
 ```
 
 ``` typescript javascript
