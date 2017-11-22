@@ -20,6 +20,9 @@ A 山寨 inkbar inspired by G⭕⛔g❗e material design.
 ```
 
 ``` css
+/* Parent element container should have relative positioning,
+   since inkbar uses absolute positioning.
+*/
 .menuItem {
   position: relative;
 }
@@ -29,8 +32,14 @@ A 山寨 inkbar inspired by G⭕⛔g❗e material design.
 // app.component.ts
 inkbarSubject: Subject<HTMLBaseElement> = new Subject();
 
-inkbarColor = "purple";
+// Specify inkbar color here. Could be any css-compatible color,
+// i.e. indigo, #eeeeee, rgba(70, 70, 200, 0.8), etc.
+inkbarColor = "purple"; 
 
+/*
+* The function used to move your inkbar under the element 
+* based on your mouse click, or specified otherwise.
+*/
 inkbarMove = (ele: HTMLBaseElement | MouseEvent) => {
   if (ele instanceof MouseEvent) {
     ele = ele.target as HTMLBaseElement;

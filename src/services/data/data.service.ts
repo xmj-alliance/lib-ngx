@@ -10,10 +10,23 @@ import 'rxjs/add/observable/throw';
 @Injectable()
 export class DataService {
 
+  /**
+   * Get Data from back-end and wrap up as an Observable.
+   * If your dedicated data extract method is not provided,
+   * a default extract method will be implemented.
+   */
   getData: (url: string, extractMethod?: (value: Response, index: number) => {}) => Observable<any>;
   throwException: (error: Response) => ErrorObservable;
   extractData: (res: Response) => any;
+  /**
+   * Post JSON Data to back-end,
+   * then wrap server response as an Observable.
+   * You can also pass your custom header.
+   */
   postJsonData: (url: string, data: any, extHeaders?: any[]) => Observable<any>;
+  /**
+   * Delete Data from back-end, wrapping server response up as an Observable.
+   */
   deleteData: (url: string) => Observable<any>;  
 
   constructor(private http: Http) {
