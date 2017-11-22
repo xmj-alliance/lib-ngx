@@ -106,6 +106,7 @@ gulp.task('pack', (cb) => {
         globals: {
           '@angular/core': 'ng.core',
           '@angular/common': 'ng.common',
+          '@angular/http': 'ng.http',
           'rxjs/Observable': 'Rx',
           'rxjs/Subject': "Rx",
           'rxjs/add/operator/distinctUntilChanged': "Rx.Observable.prototype"

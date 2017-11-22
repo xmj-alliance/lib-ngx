@@ -23,6 +23,7 @@
   "dependencies": {
     "@angular/common": ">2.4",
     "@angular/core": ">2.4",
+    "@angular/http": "^5.0.2",
     "rxjs": "^5.0.0"
   },
   "homepage": "https://github.com/xmj-alliance/lib-ngx#readme",
