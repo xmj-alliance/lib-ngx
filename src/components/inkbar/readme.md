@@ -30,20 +30,29 @@ A 山寨 inkbar inspired by G⭕⛔g❗e material design.
 
 ``` typescript javascript
 // app.component.ts
-inkbarSubject: Subject<HTMLBaseElement> = new Subject();
 
-// Specify inkbar color here. Could be any css-compatible color,
-// i.e. indigo, #eeeeee, rgba(70, 70, 200, 0.8), etc.
-inkbarColor = "purple"; 
+import { Subject } from 'rxjs';
 
-/*
-* The function used to move your inkbar under the element 
-* based on your mouse click, or specified otherwise.
-*/
-inkbarMove = (ele: HTMLBaseElement | MouseEvent) => {
-  if (ele instanceof MouseEvent) {
-    ele = ele.target as HTMLBaseElement;
-  }
-  this.inkbarSubject.next(ele);
-};
+@Component({/* ... */})
+export class AppComponent { 
+
+  inkbarSubject: Subject<HTMLBaseElement> = new Subject();
+
+  // Specify inkbar color here. Could be any css-compatible color,
+  // i.e. indigo, #eeeeee, rgba(70, 70, 200, 0.8), etc.
+  inkbarColor = "purple"; 
+
+  /*
+  * The function used to move your inkbar under the element 
+  * based on your mouse click, or specified otherwise.
+  */
+  inkbarMove = (ele: HTMLBaseElement | MouseEvent) => {
+    if (ele instanceof MouseEvent) {
+      ele = ele.target as HTMLBaseElement;
+    }
+    this.inkbarSubject.next(ele);
+  };
+
+}
+
 ```

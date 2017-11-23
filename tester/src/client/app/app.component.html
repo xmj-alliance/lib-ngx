@@ -1,14 +1,17 @@
-<div class="app">
+<div class="app" (mouseenter)="doNothing()">
 
   <nav class="app">
     <div class="content">
       <ul #navMenu>
-        <li routerLink="/index">index</li>
-        <li routerLink="/page1">page1</li>
-        <li routerLink="/404">404</li>
+        <li routerLink="/index" (click)="inkbarMove($event)" routerLinkActive="active">index</li>
+        <li routerLink="/page1" (click)="inkbarMove($event)" routerLinkActive="active">page1</li>
+        <li routerLink="/404" (click)="inkbarMove($event)" routerLinkActive="active">404</li>
       </ul>
+      <lib-inkbar [nextEle]="inkbarSubject" [color]="inkbarColor"></lib-inkbar>
     </div>
   </nav>
+
+  <button (click)="ngAfterViewChecked()">xzz</button>
 
   <main class="router">
     <router-outlet></router-outlet>

@@ -3,6 +3,9 @@ import { BrowserModule }  from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 
+// site module
+import { InkbarModule } from '../../../../dist/';
+
 // routes
 import { appRoutes } from "./app.route";
 
@@ -16,6 +19,8 @@ import { Page1Component } from './page1/page1.component';
 @NgModule({
   imports: [
     BrowserModule,
+
+    InkbarModule,
 
     appRoutes
   ],
