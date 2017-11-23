@@ -1,0 +1,23 @@
+div.app {
+  text-align: center;
+}
+
+nav.app {
+  background-color: deepskyblue;
+  ul {
+    display: flex;
+    text-align: center;
+
+    li {
+      font-size: 2em;
+      color: white;
+      margin: 0.25em 1em;
+      padding: 0.25em;
+      cursor: pointer;
+    }
+    li:hover {
+      background-color: white;
+      color: deepskyblue;
+    }
+  }
+}

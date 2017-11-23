@@ -6,6 +6,7 @@
   "scripts": {
     "build": "gulp",
     "transpile": "ngc",
+    "serve": "webpack-dev-server --hot --inline --progress --config tester/config/webpack.dev.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -20,17 +21,35 @@
   "bugs": {
     "url": "https://github.com/xmj-alliance/lib-ngx/issues"
   },
-  "dependencies": {
+  "homepage": "https://github.com/xmj-alliance/lib-ngx#readme",
+  "libDependencies": {
     "@angular/common": ">2.4",
     "@angular/core": ">2.4",
     "@angular/http": "^5.0.2",
     "rxjs": "^5.0.0"
   },
-  "homepage": "https://github.com/xmj-alliance/lib-ngx#readme",
+  "dependencies": {
+    "@angular/common": "^5.0.0",
+    "@angular/core": "^5.0.0",
+    "@angular/forms": "^5.0.0",
+    "@angular/http": "^5.0.0",
+    "@angular/platform-browser": "^5.0.0",
+    "@angular/platform-browser-dynamic": "^5.0.0",
+    "@angular/router": "^5.0.0",
+    "core-js": "^2.5.1",
+    "rxjs": "^5.4.3",
+    "zone.js": "^0.8.17"
+  },
   "devDependencies": {
     "@angular/compiler": "^5.0.2",
     "@angular/compiler-cli": "^5.0.2",
+    "@ngtools/webpack": "^1.8.2",
+    "@types/jasmine": "^2.8.2",
+    "clean-webpack-plugin": "^0.1.16",
+    "css-loader": "^0.28.7",
     "del": "^3.0.0",
+    "extract-text-webpack-plugin": "^3.0.0",
+    "file-loader": "^1.1.0",
     "gulp": "^3.9.1",
     "gulp-better-rollup": "^2.0.0",
     "gulp-clean-css": "^3.9.0",
@@ -38,10 +57,25 @@
     "gulp-sass": "^3.1.0",
     "gulp-sourcemaps": "^2.6.1",
     "gulp-uglify": "^3.0.0",
+    "html-loader": "^0.5.1",
+    "html-webpack-plugin": "^2.30.1",
+    "jasmine-core": "^2.8.0",
+    "karma": "^1.7.1",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-jasmine": "^1.1.0",
+    "karma-jasmine-html-reporter": "^0.2.2",
+    "karma-sourcemap-loader": "^0.3.7",
+    "karma-webpack": "^2.0.4",
     "pump": "^1.0.3",
+    "raw-loader": "^0.5.1",
     "rollup": "^0.51.6",
     "run-sequence": "^2.2.0",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.18.2",
     "typescript": "^2.6.1",
-    "uglify-js": "^3.1.9"
+    "uglify-js": "^3.1.9",
+    "webpack": "^3.6.0",
+    "webpack-dev-server": "^2.8.2",
+    "webpack-merge": "^4.1.0"
   }
 }

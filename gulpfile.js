@@ -132,8 +132,9 @@ gulp.task('finalize', (cb) => {
   // read package.json
   let package = require('./package.json');
   // edit package.json
-  package.peerDependencies = package.dependencies;
+  package.peerDependencies = package.libDependencies;
   delete package.dependencies;
+  delete package.libDependencies;
   delete package.devDependencies;
   delete package.scripts;
 
