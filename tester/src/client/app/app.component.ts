@@ -54,7 +54,10 @@ export class AppComponent implements AfterViewChecked {
     console.log('view checked');
     let actMenu = this.getAvtiveMenu();
     console.dir(actMenu);
-    this.inkbarMove(actMenu);
+    if (actMenu) {
+      console.log("move")
+      this.inkbarMove(actMenu);
+    }
   }
 
 }
