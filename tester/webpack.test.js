@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const { root } = require('../lib/helpers');
+const { AngularCompilerPlugin } = require('@ngtools/webpack');
 
 const appPath = root('tester', 'src', 'client', 'app');
 const globalscss = [
@@ -37,7 +38,7 @@ module.exports = {
       {
         /* Scoped scss */
         test: /\.scss$/,
-        exclude: [/node_modules/, globalscss], // exclude scoped styles
+        exclude: [/node_modules/, globalscss], // exclude global styles
         use: ['raw-loader', 'sass-loader']
       },
       {
@@ -53,8 +54,13 @@ module.exports = {
     new webpack.ContextReplacementPlugin(
       // The (\\|\/) piece accounts for path separators in *nix and Windows
       /angular(\\|\/)core(\\|\/)@angular/,
-      root('./src'), // location of your src
+      root('./src/client'), // location of your src
       {} // a map of your routes
-    )
+    ),
+    new AngularCompilerPlugin({
+      tsConfigPath: root('tester', 'src', 'client', 'tsconfig.client.json'),
+      skipCodeGeneration: true, // workaround for issue @angular/angular-cli#8626
+      entryModule: root('tester', 'src', 'client', 'app', 'app.module#AppModule')
+    })
   ]
 }
