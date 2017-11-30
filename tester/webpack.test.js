@@ -58,7 +58,7 @@ module.exports = {
       {} // a map of your routes
     ),
     new AngularCompilerPlugin({
-      tsConfigPath: root('tester', 'src', 'client', 'tsconfig.client.json'),
+      tsConfigPath: root('tester', 'src', 'client', 'tsconfig.spec.json'),
       skipCodeGeneration: true, // workaround for issue @angular/angular-cli#8626
       entryModule: root('tester', 'src', 'client', 'app', 'app.module#AppModule')
     })
