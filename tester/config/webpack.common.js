@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { AngularCompilerPlugin } = require('@ngtools/webpack');
 const { root } = require('../../lib/helpers');
 
@@ -85,6 +86,14 @@ module.exports = {
 
     new HtmlWebpackPlugin({
       template: root('tester', 'src', 'client', 'index.html')
-    })
+    }),
+
+    new CopyWebpackPlugin([
+      { 
+        from: root('tester','src', 'client', 'statics'),
+        to: 'statics',
+        ignore: [".gitkeep"]
+      }
+    ])
   ]
 };

@@ -6,6 +6,13 @@ import { Component, OnInit } from '@angular/core';
 	styleUrls: ['./index.component.scss']
 })
 export class IndexComponent implements OnInit {
+
+	// img0 demo
+	dynamicImg = "Boom!!!!!!!!!!!";
+	fallbackImg = "statics/images/cat.jpg";
+
+
+
 	constructor(
 	) { }
 	
