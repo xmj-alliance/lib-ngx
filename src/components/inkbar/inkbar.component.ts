@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, Input } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input, ChangeDetectorRef } from '@angular/core';
 
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/distinctUntilChanged';
@@ -26,7 +26,9 @@ export class InkbarComponent implements OnInit, OnDestroy {
 	_getElementWidth: (ele: HTMLBaseElement) => string;
 	inkbarInPos: (ele: HTMLBaseElement) => void;
 
-	constructor() {
+	constructor(
+		private changeDetectorRef: ChangeDetectorRef
+	) {
 		this.inkbarStyle = {
 			width: "0px",
 			left: "0px",
@@ -52,6 +54,7 @@ export class InkbarComponent implements OnInit, OnDestroy {
 		.subscribe(
 			(next) => {
 				this.inkbarInPos(next);
+				this.changeDetectorRef.detectChanges();
 			}
 		)
 	}

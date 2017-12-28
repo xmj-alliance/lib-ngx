@@ -40,10 +40,6 @@ export class AppComponent implements AfterViewChecked {
     return null;
   };
 
-  doNothing() {
-
-  }
-
   constructor(
 
   ) {
