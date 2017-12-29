@@ -47,11 +47,11 @@ export class AppComponent implements AfterViewChecked {
 
   ngAfterViewChecked() {
     this.navMenus = this.ul.nativeElement.children;
-    console.log('view checked');
+
     let actMenu = this.getAvtiveMenu();
-    console.dir(actMenu);
+
     if (actMenu) {
-      console.log("move")
+
       this.inkbarMove(actMenu);
     }
   }
