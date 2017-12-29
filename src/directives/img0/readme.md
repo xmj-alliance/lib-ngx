@@ -8,21 +8,21 @@ Replace the image with a fallback one if it loads fail.
 
 ``` typescript
 // app.module.ts
-import { Img0Directive } from '@xmj-alliance/lib-ngx';
+import { Img0Module } from '@xmj-alliance/lib-ngx';
 // ...
 
 @NgModule({
   // ...
-  declarations: [
-    Img0Directive
-  ]
+  imports: [
+    Img0Module
+  ],
 })
 
 ```
 
 ``` typescript
 // app.component.ts
-dynamicImg = "damagedImg"; // Usually dynamic based on incoming data
+dynamicImg = "possibly_404_Img"; // Usually dynamic based on incoming data
 fallbackImg = `statics/images/avatar0.png`; // A fallback picture
 ```
 

@@ -5,9 +5,7 @@ import { FormsModule } from '@angular/forms';
 
 // site module
 import { InkbarModule } from '../../../../dist/';
-
-// site directives
-import { Img0Directive } from '../../../../dist/';
+import { Img0Module } from '../../../../dist/'
 
 // routes
 import { appRoutes } from "./app.route";
@@ -24,12 +22,11 @@ import { Page1Component } from './page1/page1.component';
     BrowserModule,
 
     InkbarModule,
+    Img0Module,
 
     appRoutes
   ],
   declarations: [
-    Img0Directive, 
-    
     AppComponent,
     IndexComponent,
     Http404Component,
